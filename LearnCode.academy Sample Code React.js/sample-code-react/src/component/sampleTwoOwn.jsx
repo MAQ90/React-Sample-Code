@@ -9,23 +9,12 @@ class SampleTwo extends Component() {
         this.state = {
             signUp: [
                 {
-                    "firstName": "Taimur",
-                    "UserName": "TH1994",
-                    "PassWord": "123456789",
-                    "Age": 26
-                },
-                {
-                    "firstName": "Ahmeer",
-                    "UserName": "AH1887",
-                    "PassWord": "987654321",
-                    "Age": 26
-                },
-                {
-                    "firstName": "Salman",
-                    "UserName": "sam123",
-                    "PassWord": "65423185",
-                    "Age": 29
-                },
+                    "firstName": "",
+                    "UserName": "",
+                    "PassWord": "",
+                    "Age": 0
+                }
+                
             ]
         }
     }
