@@ -1,0 +1,15 @@
+.log-paper{
+    padding: 20px;
+    overflow:auto;
+}
+.log-Container{
+    height: auto;
+    margin: auto;
+    position: absolute;
+    min-width: 320px;
+    max-width: 400px;
+    left: 0;
+    right: 0;
+    top: 20px;
+    max-height: 430;
+}
