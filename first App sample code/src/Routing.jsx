@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from './component/App/App';
 import Home from './component/home/home';
-import SignUp from './container/signup/SignUp';
+import SignUpContainer from './container/signup/SignUpContainer';
 import SignIn from './container/signIn/SignIn';
 
 class Routing extends Component {
@@ -15,7 +15,7 @@ class Routing extends Component {
      <Router history={browserHistory}>  
        
        <Route path='/home' component={Home}/>
-         <Route path='/signUp' component={SignUp}/>
+         <Route path='/signUp' component={SignUpContainer}/>
         
 
           <Route path='/' component={App}>

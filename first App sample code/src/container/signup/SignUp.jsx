@@ -1,30 +1,39 @@
 import React, { Component } from 'react';
 import * as MUI from 'material-ui';
 import './SignUp.css';
+import firebase from 'firebase';
 
 class SignUp extends Component {
 
-  constructor(){
+  constructor() {
     super()
-    this.state={
+    this.state = {
       finished: false,
       stepIndex: 0,
       value: null,
     }
+    this.handleSignUp = this.handleSignUp.bind(this)
   }
- 
-handleSignUp(ev){
-  ev.preventDefault();
-  var credential = {};
-  credential.dName = this.refs.dName.getValue();
-  credential.uName = this.refs.uName.getValue();
-  credential.eMail = this.refs.eMail.getValue();
-  credential.gender = this.refs.gender.getValue();
-  credential.dOb = this.refs.dOb.getValue();
-  credential.passWord = this.refs.passWord.getValue();
 
-  this.props.onSignUp(credential);
-}
+
+
+  handleSignUp(ev) {
+    ev.preventDefault();
+    
+      var eMail= this.refs;
+      var passWord= this.refs.passWord;
+      console.log('aam4ir4444444444',eMail)
+  var obj ={
+    eMail: eMail,
+    passWord: passWord,
+  }
+  console.log('hhhhhhhhhhhhhhhhh',obj)
+    firebase.auth().createUserWithEmailAndPassword(obj.eMail, obj.passWord).then((obj) => {
+      console.log(obj)
+    }).catch((error) => {
+      console.log(error.message)
+    });
+  }
 
   handleChange = (event, index, value) => this.setState({ value });
   handleNext = () => {
@@ -69,13 +78,18 @@ handleSignUp(ev){
   }
 
   render() {
-    const { finished, stepIndex } = this.state;
+   // const { finished, stepIndex } = this.state;
 
     return (
 
 
 
       <div className='log-Container'>
+      <form onSubmit={this.handleSignUp}>
+      <MUI.TextField ref="eMail" name='eMail'/>
+      <MUI.FlatButton label="SignUp" primary={true} type='submit'/>
+      </form>
+      {/*<form onSubmit={this.handleSignUp}>}
         <MUI.Paper className='log-paper' zDepth={2}>
           <MUI.Stepper activeStep={stepIndex} orientation="vertical">
 
@@ -93,10 +107,11 @@ handleSignUp(ev){
                   ref="uName"
                 /> <br />
                 <MUI.TextField
-                  hintText="E-mail"
-                  floatingLabelText="E-mail"
-                  type="email"
+                   hintText="E-mail"
+                   floatingLabelText="E-mail"
+                   type="email"
                   ref="eMail"
+                  name="eMail"
 
                 /> <br />
                 {this.renderStepActions(0)}
@@ -119,7 +134,7 @@ handleSignUp(ev){
                   </MUI.SelectField>
                 </div>
                 <br />
-                <MUI.DatePicker hintText="Portrait Dialog" ref="dOb"/>
+                <MUI.DatePicker hintText="Portrait Dialog" ref="dOb" />
                 <br />
                 {this.renderStepActions(1)}
               </MUI.StepContent>
@@ -145,13 +160,14 @@ handleSignUp(ev){
 
           </MUI.Stepper>
 
-          {finished && (<MUI.FlatButton label="SignUp" primary={true} onClick={handleSignUp} />
+          {finished && (<MUI.FlatButton label="SignUp" primary={true} type='submit' />
 
 
 
           )}
         </MUI.Paper>
-      </div>
+        </form>
+  */}</div>
 
     );
   }
